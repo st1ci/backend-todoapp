@@ -1,0 +1,9 @@
+com\todo\service\TaskService.class
+com\todo\service\AuthService.class
+com\todo\repository\TaskRepository.class
+com\todo\model\User.class
+com\todo\TodoBackendApplication.class
+com\todo\controller\AuthController.class
+com\todo\controller\TaskController.class
+com\todo\repository\UserRepository.class
+com\todo\model\Task.class
