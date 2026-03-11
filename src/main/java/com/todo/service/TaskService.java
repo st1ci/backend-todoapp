@@ -4,7 +4,7 @@ import com.todo.model.Task;
 import com.todo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -15,15 +15,24 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public Task createTask(Task task){
-        return taskRepository.save(task);
+    public String getTasks(String username){
+
+        Optional<Task> tasks = taskRepository.findById(username);
+
+        if(tasks.isPresent()){
+            return tasks.get().getTasks();
+        }
+
+        return "[]";
     }
 
-    public Task updateTask(Task task){
-        return taskRepository.save(task);
-    }
+    public void updateTasks(String username,String tasks){
 
-    public void deleteTask(Integer id){
-        taskRepository.deleteById(id);
+        Task task = new Task();
+
+        task.setUsername(username);
+        task.setTasks(tasks);
+
+        taskRepository.save(task);
     }
 }

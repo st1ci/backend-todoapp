@@ -3,36 +3,30 @@ package com.todo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="tasks")
+@Table(name = "tasks")
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String username;
 
-    @Column(name="user_id")
-    private Integer userId;
+    @Column(columnDefinition = "jsonb")
+    private String tasks;
 
-    private String title;
-    private String description;
-    private String status;
-    private Integer position;
+    public Task(){}
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public String getUsername() {
+        return username;
+    }
 
-    public Integer getUserId() { return userId; }
-    public void setUserId(Integer userId) { this.userId = userId; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public String getTasks() {
+        return tasks;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-
-    public Integer getPosition() { return position; }
-    public void setPosition(Integer position) { this.position = position; }
+    public void setTasks(String tasks) {
+        this.tasks = tasks;
+    }
 }

@@ -4,11 +4,9 @@ import com.todo.model.User;
 import com.todo.service.AuthService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins="*")
 public class AuthController {
 
     private final AuthService authService;
@@ -24,13 +22,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public User login(@RequestBody User request){
-        return authService.login(request.getUsername(), request.getPassword());
+        return authService.login(request.getUsername(),request.getPassword());
     }
 
-    @GetMapping("/users")
-    public List<User> getUsers(){
-        return authService.getAllUsers();
+    @PostMapping("/recover/{username}")
+    public void recover(@PathVariable String username){
+        authService.recoverPassword(username);
     }
-
-    //modificare
 }
