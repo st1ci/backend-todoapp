@@ -22,7 +22,6 @@ public class TaskController {
     @PostMapping("/{username}")
     public void saveTasks(@PathVariable String username,
                           @RequestBody String tasks){
-
         taskService.saveTasks(username,tasks);
     }
 }

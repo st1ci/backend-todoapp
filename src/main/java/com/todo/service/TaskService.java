@@ -17,13 +17,9 @@ public class TaskService {
 
     public String getTasks(String username){
 
-        Optional<Task> tasks = taskRepository.findById(username);
-
-        if(tasks.isPresent()){
-            return tasks.get().getTasks();
-        }
-
-        return "[]";
+        return taskRepository.findById(username)
+                .map(Task::getTasks)
+                .orElse("[]");
     }
 
     public void saveTasks(String username,String tasksJson){
