@@ -19,10 +19,10 @@ public class TaskController {
         return taskService.getTasks(username);
     }
 
-    @PutMapping("/{username}")
-    public void updateTasks(@PathVariable String username,
-                            @RequestBody String tasks){
+    @PostMapping("/{username}")
+    public void saveTasks(@PathVariable String username,
+                          @RequestBody String tasks){
 
-        taskService.updateTasks(username,tasks);
+        taskService.saveTasks(username,tasks);
     }
 }

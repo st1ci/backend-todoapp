@@ -26,12 +26,13 @@ public class TaskService {
         return "[]";
     }
 
-    public void updateTasks(String username,String tasks){
+    public void saveTasks(String username,String tasksJson){
 
-        Task task = new Task();
+        Task task = taskRepository.findById(username)
+                .orElse(new Task());
 
         task.setUsername(username);
-        task.setTasks(tasks);
+        task.setTasks(tasksJson);
 
         taskRepository.save(task);
     }
