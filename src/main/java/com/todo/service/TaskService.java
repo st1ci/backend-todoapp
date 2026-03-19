@@ -16,7 +16,6 @@ public class TaskService {
     }
 
     public String getTasks(String username){
-
         return taskRepository.findById(username)
                 .map(Task::getTasks)
                 .orElse("[]");
